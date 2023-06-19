@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
 
-    app:startDestination="@id/moviesByKeywordFragment">
+    app:startDestination="@id/homeFragment">
 
 
     <fragment

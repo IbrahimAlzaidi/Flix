@@ -96,7 +96,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_selection_movie"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
                 android:fontFamily="@font/montserrat_regular"
@@ -115,7 +115,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_selection_person"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
                 android:fontFamily="@font/montserrat_regular"
@@ -134,7 +134,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_selection_tv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
                 android:onClick="@{() -> viewModel.onSearchForTvShow()}"
