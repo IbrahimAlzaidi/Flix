@@ -40,7 +40,7 @@ abstract class BaseViewModel<T : BaseUiState> : ViewModel() {
             } catch (e: FlixException.TimeOut) {
                 onError(ErrorUiState.TimeOut)
             } catch (e: Exception) {
-                onError(ErrorUiState.Unknown)
+                onError(ErrorUiState.Unknown(e.message ?: "Unknown error"))
             }
         }
 
@@ -59,7 +59,16 @@ abstract class BaseViewModel<T : BaseUiState> : ViewModel() {
                 delay(1000)
                 launch(Dispatchers.Main) {
                     result.collect { data ->
-                        onSuccess(data)
+                        try {
+                            onSuccess(data)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            onError(
+                                ErrorUiState.Unknown(
+                                    e.localizedMessage ?: "Error in onSuccess"
+                                )
+                            )
+                        }
                     }
                 }
             } catch (e: FlixException.Unauthorized) {
@@ -75,13 +84,8 @@ abstract class BaseViewModel<T : BaseUiState> : ViewModel() {
             } catch (e: FlixException.TimeOut) {
                 onError(ErrorUiState.TimeOut)
             } catch (e: Exception) {
-                onError(ErrorUiState.Unknown)
+                onError(ErrorUiState.Unknown(e.localizedMessage ?: "Unknown error"))
             }
         }
-
-
     }
-
-
 }
-

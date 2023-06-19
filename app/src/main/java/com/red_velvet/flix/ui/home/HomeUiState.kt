@@ -35,4 +35,3 @@ data class HomeUiState(
         val formattedDate: String = "",
     )
 }
-

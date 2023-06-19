@@ -1,5 +1,6 @@
 package com.red_velvet.flix.domain.usecase.home.movies
 
+import android.util.Log
 import com.red_velvet.flix.domain.entity.movie.MovieEntity
 import com.red_velvet.flix.domain.repository.MovieRepository
 import com.red_velvet.flix.domain.usecase.FormatMediaDateAndCountryCodeUsecase
@@ -16,9 +17,13 @@ class GetPopularMoviesUseCase @Inject constructor(
 
     suspend operator fun invoke(): Flow<List<MovieEntity>> {
         if (shouldCacheApiResponseUseCase("popular_movies")) {
-            refreshLocalPopularMovies()
+            refreshLocalPopularMovies().also {
+                Log.d("refreshLocalPopularMovies", "invoke: $it")
+            }
         }
-        return movieRepository.getLocalPopularMovies()
+        return movieRepository.getLocalPopularMovies().also {
+            Log.d("getLocalPopularMovies", "invoke: $it")
+        }
     }
 
     private suspend fun getPopularMovies(): List<MovieEntity> {
@@ -28,13 +33,18 @@ class GetPopularMoviesUseCase @Inject constructor(
                     it.releaseDate, it.originalLanguage
                 ),
             )
+        }.also {
+            Log.d("getPopularMovies", "$it")
         }
+
     }
 
     private suspend fun refreshLocalPopularMovies() {
         val popularMovies = getPopularMovies()
         if (popularMovies.isNotEmpty()) {
-            movieRepository.cachePopularMovies(popularMovies)
+            movieRepository.cachePopularMovies(popularMovies).also{
+                Log.d("refreshLocalPopularMovies", "Caching completed")
+            }
         }
     }
 

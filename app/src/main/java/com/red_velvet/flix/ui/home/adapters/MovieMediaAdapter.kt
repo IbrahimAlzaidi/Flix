@@ -15,5 +15,3 @@ class MovieMediaAdapter(
 ) : BaseAdapter<HomeUiState.MediaUiState>(items, listener) {
     override val layoutId: Int = R.layout.item_movie
 }
-
-

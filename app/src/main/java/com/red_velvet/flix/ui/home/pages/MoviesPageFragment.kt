@@ -23,6 +23,7 @@ class MoviesPageFragment(override val viewModel: HomeViewModel) :
     }
 
     private fun setAdapter() {
+
         moviesAdapter = MoviesAdapter(mutableListOf(), viewModel)
         binding.moviesRecyclerView.adapter = moviesAdapter
     }
@@ -42,4 +43,3 @@ class MoviesPageFragment(override val viewModel: HomeViewModel) :
         }
     }
 }
-

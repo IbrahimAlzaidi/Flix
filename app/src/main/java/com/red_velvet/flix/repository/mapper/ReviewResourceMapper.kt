@@ -10,7 +10,7 @@ import com.red_velvet.flix.domain.utils.orZero
 
 fun ReviewResource.toEntity(): ReviewEntity {
     return ReviewEntity(
-        id = id.orEmpty(),
+        id = id?.toInt()!!,
         author = authorDetails?.toEntity()!!,
         content = content.orEmpty(),
         createdAt = createdAt.orEmpty(),

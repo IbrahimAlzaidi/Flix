@@ -10,7 +10,11 @@ class ViewPagerAdapter(fragment: Fragment, val viewModel: HomeViewModel) :
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> MoviesPageFragment(viewModel)
+            0 -> {
+                viewModel.getMoviesPageData()
+                MoviesPageFragment(viewModel)
+            }
+
             1 -> {
                 viewModel.getTvShowsPageData()
                 TvShowsPageFragment(viewModel)

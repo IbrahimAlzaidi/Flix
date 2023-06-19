@@ -14,7 +14,7 @@ sealed class ErrorUiState {
 
     object TimeOut : ErrorUiState()
 
-    object Unknown : ErrorUiState()
+    data class Unknown(val message: String) : ErrorUiState()
 
     fun isUnAuthorized() = this is UnAuthorized
 

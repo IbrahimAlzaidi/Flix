@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_12dp"
             android:fontFamily="@font/montserrat_medium"
-            android:rating="@{item.rating}"
+            android:textRate="@{item.rating}"
             android:textColor="@color/font_primary"
             app:layout_constraintBottom_toBottomOf="@+id/imageview_review_star"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,18 +76,11 @@
             android:paddingBottom="@dimen/_12dp"
             android:text="@{item.content}"
             android:textColor="@color/font_accent"
-            app:animDuration="500"
-            app:collapsedLines="5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_publish_date"
-            app:readLessText=""
-            app:readMoreText="Read more"
             tools:text="Halle Bailey served a very good performance with a lot of charisma and passion, she also has an impressive voice. in some parts people were clapping from excitement and i shed a tear since i saw performing her first song.
 I'm not a big fan of the growing wave of remakes and live-actions but this movie is something that I couldn't miss, they revisited one of my favorite classics and the result is striking, extravagant, funny, exciting, it has everything I love. I had my doubts since I saw the cast and the character designs (not to mention Ursula's makeup) but these actors have a lot of charisma, the final result is solid and entertaining.I love Alan Menken and Howard Ashman compositions, The Little Mermaid and Little Shop Of Horrors are my favorite works from them, their lyrics and arrangements give me goosebumps. " />
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

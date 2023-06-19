@@ -2,6 +2,7 @@ package com.red_velvet.flix.ui.utils
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
@@ -32,7 +33,7 @@ fun TextInputLayout.setHelperText(helperText: String) {
 @BindingAdapter("app:showMovieContentOnSuccess")
 fun showMovieContentOnSuccess(view: View, state: HomeUiState?) {
     if (state != null) {
-        view.isVisible = state.isMovieLoading == false && state.movieError == null
+        view.isVisible = (!state.isMovieLoading) && (state.movieError == null)
     }
 }
 
@@ -67,4 +68,9 @@ fun showWhenNoInternet(view: View, error: ErrorUiState?) {
     if (error != null) {
         view.isVisible = error.isNoInternet()
     }
+}
+
+@BindingAdapter("android:textRate")
+fun TextView.setInteger( value: Int) {
+    text = value.toString()
 }

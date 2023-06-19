@@ -10,8 +10,9 @@ class FormatMediaDateAndCountryCodeUsecase @Inject constructor() {
         return if (rawDate.isEmpty()) {
             ""
         } else {
-
-            "${parseInputDate(rawDate)?.let { formatMovieDate(it) }} (${languageCode.split("-")[1].uppercase()})"
+            val languageCodeParts = languageCode.split("-")
+            val countryCode = if (languageCodeParts.size > 1) languageCodeParts[1].uppercase() else ""
+            "${formatMovieDate(parseInputDate(rawDate))} ($countryCode)"
         }
     }
 
@@ -19,7 +20,7 @@ class FormatMediaDateAndCountryCodeUsecase @Inject constructor() {
         return if (rawDate.isEmpty()) {
             ""
         } else {
-            "${parseInputDate(rawDate).let { formatSeriesDate(it) }}"
+            formatSeriesDate(parseInputDate(rawDate))
         }
     }
 

@@ -15,9 +15,7 @@ class GetUpcomingMoviesUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): Flow<List<MovieEntity>> {
-        if (shouldCacheApiResponseUseCase("upcoming_movies")) {
-            refreshLocalUpcomingMovies()
-        }
+        refreshLocalUpcomingMovies()
         return movieRepository.getLocalUpcomingMovies()
     }
 
@@ -33,7 +31,7 @@ class GetUpcomingMoviesUseCase @Inject constructor(
 
     private suspend fun refreshLocalUpcomingMovies() {
         val upcomingMovies = getUpcomingMovies()
-            movieRepository.cacheUpcomingMovies(upcomingMovies)
+        movieRepository.cacheUpcomingMovies(upcomingMovies)
 
     }
 }

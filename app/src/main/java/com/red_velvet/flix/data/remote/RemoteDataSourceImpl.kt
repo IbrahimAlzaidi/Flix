@@ -24,6 +24,7 @@ import com.red_velvet.flix.data.remote.recoures.series.SeriesResource
 import com.red_velvet.flix.data.remote.recoures.trailer.TrailersResource
 import com.red_velvet.flix.domain.utils.FlixException
 import com.red_velvet.flix.repository.RemoteDataSource
+import com.red_velvet.flix.ui.base.ErrorUiState
 import okhttp3.internal.http2.ConnectionShutdownException
 import retrofit2.Response
 import java.io.IOException
@@ -304,6 +305,8 @@ class RemoteDataSourceImpl @Inject constructor(
             throw FlixException.NoInternet
         } catch (e: IOException) {
             throw FlixException.NoInternet
+        } catch (e: Exception) {
+            throw e
         }
     }
 }

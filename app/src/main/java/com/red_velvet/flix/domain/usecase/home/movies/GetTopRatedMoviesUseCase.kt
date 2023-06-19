@@ -15,9 +15,7 @@ class GetTopRatedMoviesUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): Flow<List<MovieEntity>> {
-        if (shouldCacheApiResponseUseCase("top_rated_movies")) {
-            refreshLocalTopRatedMovies()
-        }
+        refreshLocalTopRatedMovies()
         return movieRepository.getLocalTopRatedMovies()
     }
 
@@ -34,7 +32,6 @@ class GetTopRatedMoviesUseCase @Inject constructor(
     private suspend fun refreshLocalTopRatedMovies() {
         val topRatedMovies = getTopRatedMovies()
         if (topRatedMovies.isNotEmpty()) {
-
             movieRepository.cacheTopRatedMovies(topRatedMovies)
         }
     }

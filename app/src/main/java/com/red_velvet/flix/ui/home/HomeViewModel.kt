@@ -45,6 +45,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getMoviesPageData() {
+        Log.d("getMoviesPageData", ":  Triggered ")
         _state.update { it.copy(movieError = null, isMovieLoading = true) }
         getPopularMovies()
         getNowPlayingMovies()
@@ -68,7 +69,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun modifyPopularMoviesState(movies: List<MovieEntity>) {
-        Log.d("HomeViewModel", "modifyPopularMoviesState: $movies")
         _state.update { state ->
             state.copy(popularMovies = movies.takeIf { it.isNotEmpty() }
                 ?.let { mutableListOf(it.first()).toMovieUiState() } ?: emptyList(),
@@ -85,6 +85,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun modifyNowPlayingMoviesState(movies: List<MovieEntity>) {
+        Log.d("HomeViewModel", "modifyNowPlayingMoviesState: $movies")
         _state.update {
             it.copy(nowPlayingMovies = movies.toMovieUiState(), isMovieLoading = false)
         }
@@ -94,7 +95,6 @@ class HomeViewModel @Inject constructor(
         tryToExecuteHome(
             getUpcomingMovies::invoke, ::modifyUpcomingMoviesState, ::onMovieError
         )
-
     }
 
     private fun modifyUpcomingMoviesState(movies: List<MovieEntity>) {
@@ -116,6 +116,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun onMovieError(errorUiState: ErrorUiState) {
+        Log.d("onMovieError ", ": $errorUiState")
         _state.update { it.copy(movieError = errorUiState, isMovieLoading = false) }
     }
 
@@ -136,12 +137,18 @@ class HomeViewModel @Inject constructor(
 
 
     private fun getAiringTodaySeries() {
+        Log.d("HomeViewModel", "getAiringTodaySeries: Trigger")
         tryToExecuteHome(
-            getAiringTodaySeries::invoke, ::modifyAiringTodaySeriesState, ::onSeriesError
+            call = {getAiringTodaySeries.invoke().also {
+                Log.d("HomeViewModel", "getAiringTodaySeries: $it")
+            }},
+            onSuccess = {modifyAiringTodaySeriesState(it)},
+            onError = {onSeriesError(it)}
         )
     }
 
     private fun modifyAiringTodaySeriesState(series: List<SeriesEntity>) {
+        Log.d("HomeViewModel", "modifyAiringTodaySeriesState: $series")
         _state.update {
             it.copy(
                 airingTodaySeries = series.toSeriesUiState(), isSeriesLoading = false
@@ -157,6 +164,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun modifyOnAirSeriesState(series: List<SeriesEntity>) {
+        Log.d("HomeViewModel", "modifyOnAirSeriesState: $series")
         _state.update {
             it.copy(
                 onTVSeries = series.toSeriesUiState(), isSeriesLoading = false
@@ -172,6 +180,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun modifyTopRatedSeriesState(series: List<SeriesEntity>) {
+        Log.d("HomeViewModel", "modifyTopRatedSeriesState: $series")
         _state.update {
             it.copy(
                 topRatedSeries = series.toSeriesUiState(), isSeriesLoading = false
@@ -181,6 +190,7 @@ class HomeViewModel @Inject constructor(
 
 
     private fun onSeriesError(errorUiState: ErrorUiState) {
+        Log.d("HomeViewModel", "onSeriesError: $errorUiState")
         _state.update { it.copy(seriesError = errorUiState, isSeriesLoading = false) }
     }
 

@@ -34,7 +34,7 @@ class GetPopularSeriesUseCase @Inject constructor(
 
     private suspend fun refreshLocalPopularSeries() {
         val popularSeries = getPopularSeries()
-            seriesRepository.cachePopularSeries(popularSeries)
+        seriesRepository.cachePopularSeries(popularSeries)
     }
 
 }
