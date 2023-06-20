@@ -1,6 +1,6 @@
-package com.red_velvet.flix.ui.moviesbykeyword.uiState
+package com.red_velvet.flix.ui.upcomingmovies.uiState
 
-data class MovieKeywordsUiState(
+data class MovieUpComingUiState(
     val id: Int? = null,
     val image: String? = "",
     val title: String? = "",

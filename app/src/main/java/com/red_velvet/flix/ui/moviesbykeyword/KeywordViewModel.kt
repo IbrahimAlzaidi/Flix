@@ -7,7 +7,7 @@ import com.red_velvet.flix.domain.usecase.GetMoviesByKeywordUseCase
 import com.red_velvet.flix.ui.base.BaseViewModel
 import com.red_velvet.flix.ui.base.ErrorUiState
 import com.red_velvet.flix.ui.moviesbykeyword.uiState.KeywordUiState
-import com.red_velvet.flix.ui.moviesbykeyword.uiState.toMovieUiStates
+import com.red_velvet.flix.ui.moviesbykeyword.uiState.toMovieKeywordsUiStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,7 +40,7 @@ class KeywordViewModel @Inject constructor(
     }
 
     private fun onMoviesReceived(movies: List<MovieEntity>) {
-        val movieUiStates = movies.map { it.toMovieUiStates() }
+        val movieUiStates = movies.map { it.toMovieKeywordsUiStates() }
         _state.update { it.copy(movieList = movieUiStates) }
         Log.d("onMoviesReceived", "${movieUiStates.size} ")
     }

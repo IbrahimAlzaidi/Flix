@@ -1,8 +1,9 @@
-package com.red_velvet.flix.ui.moviesbykeyword.uiState
+package com.red_velvet.flix.ui.upcomingmovies.uiState
 
 import com.red_velvet.flix.domain.entity.movie.MovieEntity
-fun MovieEntity.toMovieKeywordsUiStates() : MovieKeywordsUiState {
-    return MovieKeywordsUiState(
+
+fun MovieEntity.toMoviesUpComingUiState(): MovieUpComingUiState {
+    return MovieUpComingUiState(
         id = id,
         title = title,
         image = imageUrl,

@@ -1,8 +1,9 @@
-package com.red_velvet.flix.ui.moviesbykeyword.uiState
+package com.red_velvet.flix.ui.popularmovie.uiState
 
 import com.red_velvet.flix.domain.entity.movie.MovieEntity
-fun MovieEntity.toMovieKeywordsUiStates() : MovieKeywordsUiState {
-    return MovieKeywordsUiState(
+
+fun MovieEntity.toMoviePopularUiState(): MoviePopularUiState {
+    return MoviePopularUiState(
         id = id,
         title = title,
         image = imageUrl,

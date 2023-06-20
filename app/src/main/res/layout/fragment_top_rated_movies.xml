@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.red_velvet.flix.ui.moviesbykeyword.KeywordViewModel" />
+            type="com.red_velvet.flix.ui.topratedmovie.MovieTopRatedViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        tools:context=".ui.moviesbykeyword.MoviesByKeywordFragment">
+        tools:context=".ui.topratedmovie.MovieTopRatedFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -31,7 +31,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="3" />
+            app:spanCount="3"
+            tools:listitem="@layout/item_now_playing_movies" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
