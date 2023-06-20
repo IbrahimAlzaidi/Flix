@@ -25,7 +25,6 @@ class GetPopularMoviesUseCase @Inject constructor(
             Log.d("getLocalPopularMovies", "invoke: $it")
         }
     }
-
     private suspend fun getPopularMovies(): List<MovieEntity> {
         return movieRepository.getPopularMovies().map {
             it.copy(

@@ -23,7 +23,7 @@
         android:paddingHorizontal="@dimen/_8dp"
         android:paddingVertical="@dimen/_8dp"
         app:cardCornerRadius="@dimen/_8dp"
-        android:onClick="@{() -> listener.onMoviePlayingNowCardClick()}"
+        android:onClick="@{() -> listener.onMoviePlayingNowCardClick(item.id)}"
         app:cardElevation="4dp"
         app:strokeColor="@color/background">
 

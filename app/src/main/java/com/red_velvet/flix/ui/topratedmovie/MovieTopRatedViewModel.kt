@@ -43,6 +43,6 @@ class MovieTopRatedViewModel @Inject constructor(
     }
 
     override fun onMovieTopRatedCardClick(id: Int) {
-        TODO("Not yet implemented")
+
     }
 }
